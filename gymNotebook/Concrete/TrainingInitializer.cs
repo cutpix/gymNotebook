@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.Entity.Migrations;
 using System.Data.Entity;
 using gymNotebook.Migrations;
+using System;
 
 namespace gymNotebook.Concrete
 {
@@ -57,8 +58,28 @@ namespace gymNotebook.Concrete
                 new Exercise(){ ExerciseName = "Incline Bench Press", MusclePartID = 1, SessionID = 1, Description = "Wyciskanie sztangi leżąc na ławce skośnej-głową w górę"},
             };
 
-            exercises.ForEach(e => context.Exercises.AddOrUpdate(e));
-            context.SaveChanges();
+            //exercises.ForEach(e => context.Exercises.AddOrUpdate(e));
+            //context.SaveChanges();
+
+            var results = new List<TrainingResult>
+            {
+                new TrainingResult(){ ExerciseID = 7, NumberSeries = 1, Repetitions = 12, Datetime = DateTime.Now, Weigth = 80},
+                new TrainingResult(){ ExerciseID = 7, NumberSeries = 2, Repetitions = 10, Datetime = DateTime.Now, Weigth = 85},
+                new TrainingResult(){ ExerciseID = 7, NumberSeries = 3, Repetitions = 8, Datetime = DateTime.Now, Weigth = 90},
+                new TrainingResult(){ ExerciseID = 7, NumberSeries = 4, Repetitions = 6, Datetime = DateTime.Now, Weigth = 95}
+            };
+
+            //results.ForEach(tr => context.TrainingResults.AddOrUpdate(tr));
+            //context.SaveChanges();
+
+            var userData = new List<Models.UserData>
+            {
+                new Models.UserData() { UserId = "b6b7f758-2f08-45d2-8ded-4f1670dad44b", Name = "TestName", Surname = "TestSurname", Height = 90f,
+                DateOfBirth = DateTime.ParseExact("2000-01-01", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) }
+            };
+
+            //userData.ForEach(ud => context.UserData.AddOrUpdate(ud));
+            //context.SaveChanges();
         }
     }
 }
