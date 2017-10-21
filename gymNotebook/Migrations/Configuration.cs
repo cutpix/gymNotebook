@@ -1,11 +1,12 @@
 namespace gymNotebook.Migrations
 {
+    using gymNotebook.Concrete;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<gymNotebook.Concrete.TrainingContext>
+    public sealed class Configuration : DbMigrationsConfiguration<gymNotebook.Concrete.TrainingContext>
     {
         public Configuration()
         {
@@ -15,6 +16,7 @@ namespace gymNotebook.Migrations
 
         protected override void Seed(gymNotebook.Concrete.TrainingContext context)
         {
+            TrainingInitializer.Seed(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

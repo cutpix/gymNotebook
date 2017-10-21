@@ -12,17 +12,29 @@ namespace gymNotebook.Concrete
 
         }
 
+        static TrainingContext()
+        {
+            Database.SetInitializer<TrainingContext>(new TrainingInitializer());
+        }
+
         public static TrainingContext Create()
         {
             return new TrainingContext();
         }
 
-        public DbSet<Training> Trainings { get; set; }
-        public DbSet<TrainingSession> TrainingSessions { get; set; }
-        public DbSet<Exercise> Exercises { get; set; }
-        public DbSet<TrainingResult> TrainingResults { get; set; }
-        public DbSet<MusclePart> MuscleParts { get; set; }
-        public DbSet<UserData> UserData { get; set; }
-        public DbSet<Progress> Progress { get; set; }
+        public virtual DbSet<Training> Trainings { get; set; }
+        public virtual DbSet<TrainingSession> TrainingSessions { get; set; }
+        public virtual DbSet<Exercise> Exercises { get; set; }
+        public virtual DbSet<TrainingResult> TrainingResults { get; set; }
+        public virtual DbSet<MusclePart> MuscleParts { get; set; }
+        public virtual DbSet<UserData> UserData { get; set; }
+        public virtual DbSet<Progress> Progress { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

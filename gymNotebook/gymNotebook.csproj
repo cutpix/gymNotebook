@@ -128,14 +128,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ITrainingRepository.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Concrete\EFTraningRepository.cs" />
     <Compile Include="Concrete\TrainingContext.cs" />
+    <Compile Include="Concrete\TrainingInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201710191821339_Progress.Designer.cs">
       <DependentUpon>201710191821339_Progress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710211451299_Change_naming.cs" />
+    <Compile Include="Migrations\201710211451299_Change_naming.Designer.cs">
+      <DependentUpon>201710211451299_Change_naming.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -213,7 +217,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Abstract\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Training\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710101948185_InitialCreate.resx">
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710191821339_Progress.resx">
       <DependentUpon>201710191821339_Progress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211451299_Change_naming.resx">
+      <DependentUpon>201710211451299_Change_naming.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
