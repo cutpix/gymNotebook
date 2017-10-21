@@ -7,9 +7,9 @@ namespace gymNotebook.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-beta1-60406")]
-    public sealed partial class UserData : IMigrationMetadata
+    public sealed partial class UserData1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UserData));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UserData1));
         
         string IMigrationMetadata.Id
         {

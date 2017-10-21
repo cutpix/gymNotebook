@@ -77,8 +77,20 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Moq, Version=4.1.1309.1617, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.1.1309.1617\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -99,6 +111,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -128,9 +143,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ITrainingRepository.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Concrete\EFTrainingRepository.cs" />
     <Compile Include="Concrete\TrainingContext.cs" />
     <Compile Include="Concrete\TrainingInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -139,6 +157,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\201710101948185_InitialCreate.cs" />
     <Compile Include="Migrations\201710101948185_InitialCreate.Designer.cs">
       <DependentUpon>201710101948185_InitialCreate.cs</DependentUpon>
@@ -171,9 +190,9 @@
     <Compile Include="Migrations\201710191804464_TrainingChanges8.Designer.cs">
       <DependentUpon>201710191804464_TrainingChanges8.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710191814036_UserData.cs" />
-    <Compile Include="Migrations\201710191814036_UserData.Designer.cs">
-      <DependentUpon>201710191814036_UserData.cs</DependentUpon>
+    <Compile Include="Migrations\201710191814036_UserData1.cs" />
+    <Compile Include="Migrations\201710191814036_UserData1.Designer.cs">
+      <DependentUpon>201710191814036_UserData1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201710191816316_UserData2.cs" />
     <Compile Include="Migrations\201710191816316_UserData2.Designer.cs">
@@ -209,6 +228,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Training\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,9 +238,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Abstract\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Training\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710101948185_InitialCreate.resx">
@@ -246,8 +265,8 @@
     <EmbeddedResource Include="Migrations\201710191804464_TrainingChanges8.resx">
       <DependentUpon>201710191804464_TrainingChanges8.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710191814036_UserData.resx">
-      <DependentUpon>201710191814036_UserData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710191814036_UserData1.resx">
+      <DependentUpon>201710191814036_UserData1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710191816316_UserData2.resx">
       <DependentUpon>201710191816316_UserData2.cs</DependentUpon>

@@ -72,9 +72,9 @@ namespace gymNotebook.Concrete
             //results.ForEach(tr => context.TrainingResults.AddOrUpdate(tr));
             //context.SaveChanges();
 
-            var userData = new List<Models.UserData>
+            var userData = new List<UserData>
             {
-                new Models.UserData() { UserId = "b6b7f758-2f08-45d2-8ded-4f1670dad44b", Name = "TestName", Surname = "TestSurname", Height = 90f,
+                new UserData() { UserId = "b6b7f758-2f08-45d2-8ded-4f1670dad44b", Name = "TestName", Surname = "TestSurname", Height = 90f,
                 DateOfBirth = DateTime.ParseExact("2000-01-01", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) }
             };
 

@@ -1,5 +1,8 @@
-﻿using gymNotebook.Concrete;
+﻿using gymNotebook.Abstract;
+using gymNotebook.App_Start;
+using gymNotebook.Concrete;
 using gymNotebook.Models;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,26 @@ namespace gymNotebook.Controllers
 {
     public class HomeController : Controller
     {
-        private TrainingContext db = new TrainingContext();
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            private set { _userManager = value; }
+        }
+
+        private ITrainingRepository repository;
+
+        public HomeController(ITrainingRepository trainingRepository)
+        {
+            this.repository = trainingRepository;
+        }
 
         public ActionResult Index()
         {
-            //var training = new Training { TrainingName = "Push-Pull" };
-            //var monSession = new TrainingSession { SessionName = "Poniedziałek" };
-            //var wenSession = new TrainingSession { SessionName = "Środa" };
+            // var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
-            //var podciaganie = new Exercise { ExerciseName = "Podciąganie" };
-            //var plecy = new MusclePart { MuscleName = "Plecy" };
+            // var trainings = repository.Trainings.Where(t => t.UserId == user.Id);
 
-
-            //// plecy.Exercises.Add(plecy);
-            //training.TrainingSessions.Add(monSession);
-            //training.TrainingSessions.Add(wenSession);
-            //monSession.Exercises.Add(podciaganie);
-            //db.Trainings.Add(training);
-            //db.SaveChanges();
             return View();
         }
     }
