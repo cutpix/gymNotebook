@@ -24,5 +24,7 @@ namespace gymNotebook.Concrete
         public DbSet<MusclePart> MuscleParts { get; set; }
         public DbSet<UserData> UserData { get; set; }
         public DbSet<Progress> Progress { get; set; }
+
+       // public System.Data.Entity.DbSet<gymNotebook.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

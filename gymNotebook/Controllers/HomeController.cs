@@ -30,14 +30,7 @@ namespace gymNotebook.Controllers
             //db.SaveChanges();
             return View();
         }
-        public ActionResult Add()
-        {
-            return View();
-        }
-
-        public ActionResult Test()
-        {
-            return View();
-        }
+      
+        
     }
 }
