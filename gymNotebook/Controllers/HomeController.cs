@@ -35,5 +35,7 @@ namespace gymNotebook.Controllers
 
             return View();
         }
+      
+        
     }
 }
