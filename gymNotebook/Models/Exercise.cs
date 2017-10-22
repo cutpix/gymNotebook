@@ -22,7 +22,7 @@ namespace gymNotebook.Models
 
         public int SessionID { get; set; }
 
-        public virtual TrainingSession TrainingSessions { get; set; }
+        //public virtual TrainingSession TrainingSessions { get; set; }
 
         public virtual ICollection<TrainingResult> TrainingResults { get; set; }
     }

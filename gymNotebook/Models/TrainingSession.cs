@@ -15,7 +15,7 @@ namespace gymNotebook.Models
 
         public virtual Training Training { get; set; }
 
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        //public virtual ICollection<Exercise> Exercises { get; set; }
 
     }
 }

@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201710211451299_Change_naming.Designer.cs">
       <DependentUpon>201710211451299_Change_naming.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710222037580_Delete_Key_exercise-session.cs" />
+    <Compile Include="Migrations\201710222037580_Delete_Key_exercise-session.Designer.cs">
+      <DependentUpon>201710222037580_Delete_Key_exercise-session.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -296,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710211451299_Change_naming.resx">
       <DependentUpon>201710211451299_Change_naming.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710222037580_Delete_Key_exercise-session.resx">
+      <DependentUpon>201710222037580_Delete_Key_exercise-session.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

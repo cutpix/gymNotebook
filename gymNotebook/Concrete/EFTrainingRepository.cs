@@ -34,5 +34,111 @@ namespace gymNotebook.Concrete
 
             return vm;
         }
+
+        public void SaveTraining(Training training)
+        {
+            if(training.TrainingID == 0)
+            {
+                db.Trainings.Add(training);
+            }
+            else
+            {
+                Training dbEntry = db.Trainings.Find(training.TrainingID);
+                if(dbEntry != null)
+                {
+                    dbEntry.TrainingName = training.TrainingName;
+                }
+            }
+            db.SaveChanges();
+        }
+
+        public void SaveSession(TrainingSession session)
+        {
+            if (session.SessionID == 0)
+            {
+                db.TrainingSessions.Add(session);
+            }
+            else
+            {
+                TrainingSession dbEntry = db.TrainingSessions.Find(session.SessionID);
+                if (dbEntry != null)
+                {
+                    dbEntry.SessionName = session.SessionName;
+                    dbEntry.TrainingID = session.TrainingID;
+                }
+            }
+            db.SaveChanges();
+        }
+
+        public void SaveExercise(Exercise exercise)
+        {
+            if (exercise.ExerciseID == 0)
+            {
+                db.Exercises.Add(exercise);
+            }
+            else
+            {
+                Exercise dbEntry = db.Exercises.Find(exercise.ExerciseID);
+                if (dbEntry != null)
+                {
+                    dbEntry.ExerciseName = exercise.ExerciseName;
+                    dbEntry.Description = exercise.Description;
+                    dbEntry.MusclePartID = exercise.MusclePartID;
+                    dbEntry.SessionID = exercise.SessionID;
+                }
+            }
+            db.SaveChanges();
+        }
+
+        public Training DeleteTraining(int trainingID)
+        {
+            Training dbTraining = db.Trainings.Find(trainingID); 
+            if(dbTraining != null)
+            {
+                List<TrainingSession> dbSessions = db.TrainingSessions.Where(s => s.TrainingID == trainingID).ToList();
+                if(dbSessions != null)
+                {
+                    foreach(var sesion in dbSessions)
+                    {
+                        db.TrainingSessions.Remove(sesion);
+                        db.SaveChanges();
+                    }
+                }
+                db.Trainings.Remove(dbTraining);
+                db.SaveChanges();
+            }
+            return dbTraining;
+        }
+
+        public TrainingSession DeleteSession(int sessionID)
+        {
+            TrainingSession dbEntry = db.TrainingSessions.Find(sessionID);
+            if (dbEntry != null)
+            {
+                db.TrainingSessions.Remove(dbEntry);
+                db.SaveChanges();
+            }
+            return dbEntry;
+        }
+
+        public Exercise DeleteExercise(int exerciseID)
+        {
+            Exercise dbExercise = db.Exercises.Find(exerciseID);
+            if (dbExercise != null)
+            {
+                List<TrainingResult> dbResults = db.TrainingResults.Where(r => r.ExerciseID == exerciseID).ToList();
+                if(dbResults != null)
+                {
+                    foreach(var result in dbResults)
+                    {
+                        db.TrainingResults.Remove(result);
+                        db.SaveChanges();
+                    }
+                }
+                db.Exercises.Remove(dbExercise);
+                db.SaveChanges();
+            }
+            return dbExercise;
+        }
     }
 }
