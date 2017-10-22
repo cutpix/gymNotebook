@@ -20,22 +20,16 @@ namespace gymNotebook.Controllers
             private set { _userManager = value; }
         }
 
-        private ITrainingRepository repository;
+        //private ITrainingRepository repository;
 
-        public HomeController(ITrainingRepository trainingRepository)
-        {
-            this.repository = trainingRepository;
-        }
+        //public HomeController(ITrainingRepository trainingRepository)
+        //{
+        //    this.repository = trainingRepository;
+        //}
 
         public ActionResult Index()
         {
-            // var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-
-            // var trainings = repository.Trainings.Where(t => t.UserId == user.Id);
-
             return View();
         }
-      
-        
     }
 }

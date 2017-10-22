@@ -1,6 +1,9 @@
 ﻿using gymNotebook.Abstract;
 using gymNotebook.App_Start;
+using gymNotebook.Concrete;
 using gymNotebook.Models;
+using gymNotebook.ViewModels;
+using gymNotebook.Infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -22,19 +25,19 @@ namespace gymNotebook.Controllers
         }
 
         private ITrainingRepository repository;
-
         public TrainingController(ITrainingRepository trainingRepository)
         {
             this.repository = trainingRepository;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            // var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
-            // var trainings = repository.Trainings.Where(t => t.UserId == user.Id);
+            TrainingViewModel training = repository.GetTrainings(user.Id);
 
-            return View(repository.Trainings);
+            return View(training);
         }
+
     }
 }

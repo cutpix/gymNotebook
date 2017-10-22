@@ -1,4 +1,5 @@
 ﻿using gymNotebook.Models;
+using gymNotebook.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace gymNotebook.Abstract
 {
     public interface ITrainingRepository
     {
-        IEnumerable<Training> Trainings { get; }
+        TrainingViewModel GetTrainings(string UserID);
     }
 }

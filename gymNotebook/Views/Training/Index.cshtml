@@ -1,14 +1,22 @@
-﻿@model IEnumerable<gymNotebook.Models.Training>
+﻿@model gymNotebook.ViewModels.TrainingViewModel
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@foreach(var item in Model)
+@foreach (var training in Model.Trainings)
 {
-    <tr>
-        <td>@item.TrainingName</td>
-        <td>@item.TrainingID</td>
-    </tr>
+
+    <ol>@training.TrainingName :</ol>
+
+    foreach (var session in Model.TrainingSessions.Where(t => t.TrainingID == training.TrainingID))
+    {
+
+            <ol>@session.SessionName :</ol>
+           
+            foreach (var exercise in Model.Exercises.Where(e => e.SessionID == session.SessionID))
+            {
+                    <li>@exercise.ExerciseName</li>
+            }
+        }
+
 }
