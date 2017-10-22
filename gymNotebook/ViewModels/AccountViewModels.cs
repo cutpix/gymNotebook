@@ -61,7 +61,7 @@ namespace gymNotebook.ViewModels
         [Display(Name = "Hasło")]
         public string Password { get; set; }
 
-        [Display(Name = "Zapamiętać Cię?")]
+        [Display(Name = "Remember me")]
         public bool RememberMe { get; set; }
     }
 

@@ -12,6 +12,11 @@ namespace gymNotebook.Controllers
 {
     public class AccountController : Controller
     {
+
+        public ActionResult test()
+        {
+            return View();
+        }
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
