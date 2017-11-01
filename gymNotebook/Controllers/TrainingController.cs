@@ -15,6 +15,7 @@ using System.Web.Mvc;
 
 namespace gymNotebook.Controllers
 {
+    [Authorize]
     public class TrainingController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -24,8 +25,8 @@ namespace gymNotebook.Controllers
             private set { _userManager = value; }
         }
 
-        private ITrainingRepository repository;
-        public TrainingController(ITrainingRepository trainingRepository)
+        private ITrainingManageRepository repository;
+        public TrainingController(ITrainingManageRepository trainingRepository)
         {
             this.repository = trainingRepository;
         }
@@ -38,6 +39,27 @@ namespace gymNotebook.Controllers
 
             return View(training);
         }
+
+        [HttpPost]
+        public ActionResult DeleteTrainig(int trainingId)
+        {
+            Training deletedTraining = repository.DeleteTraining(trainingId);
+            if (deletedTraining != null)
+            {
+                TempData["message"] = string.Format("Usunięto {0}", deletedTraining.TrainingName);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> StartTraining()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            TrainingViewModel training = repository.GetTrainings(user.Id);
+
+            return View(training);
+        }
+
 
     }
 }

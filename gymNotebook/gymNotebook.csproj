@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -160,12 +161,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ITrainingRepository.cs" />
+    <Compile Include="Abstract\ITrainingManageRepository.cs" />
+    <Compile Include="Abstract\ITrainingResultsRepository.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Concrete\EFTrainingRepository.cs" />
+    <Compile Include="Concrete\EFTrainingManageRepository.cs" />
+    <Compile Include="Concrete\EFTrainingResultsRepository.cs" />
     <Compile Include="Concrete\TrainingContext.cs" />
     <Compile Include="Concrete\TrainingInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\TrainingResultsViewModel.cs" />
     <Compile Include="ViewModels\TrainingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +257,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Training\Index.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Training\StartTraining.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

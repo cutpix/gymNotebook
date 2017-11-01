@@ -1,0 +1,37 @@
+﻿@model gymNotebook.ViewModels.TrainingViewModel
+
+@{
+    ViewBag.Title = "StartTraining";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StartTraining</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+
+</p>
+@foreach (var training in Model.Trainings)
+{
+
+    <ol>@training.TrainingName :</ol>
+
+    foreach (var session in Model.TrainingSessions.Where(t => t.TrainingID == training.TrainingID))
+    {
+
+        <ol>@session.SessionName :</ol>
+
+        foreach (var exercise in Model.Exercises.Where(e => e.SessionID == session.SessionID))
+        {
+            <li>@exercise.ExerciseName</li>
+        }
+    }
+
+}

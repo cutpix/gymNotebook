@@ -8,10 +8,24 @@ using gymNotebook.ViewModels;
 
 namespace gymNotebook.Concrete
 {
-    public class EFTrainingRepository : ITrainingRepository
+    public class EFTrainingManageRepository : ITrainingManageRepository
     {
-        private TrainingContext db = new TrainingContext();
+        public TrainingContext db = new TrainingContext();
 
+        public IEnumerable<Training> Trainings
+        {
+            get { return db.Trainings; }
+        }
+        public ExerciseViewModel GetExercises(int SessionId)
+        {
+            var exercises = db.Exercises.Where(e => e.SessionID == SessionId).ToList();
+
+            var vm = new ExerciseViewModel
+            {
+                Exercises = exercises
+            };
+            return vm;
+        }
         public TrainingViewModel GetTrainings(string UserID)
         {
             var trainings = db.Trainings.Where(a => a.UserId == UserID).ToList();

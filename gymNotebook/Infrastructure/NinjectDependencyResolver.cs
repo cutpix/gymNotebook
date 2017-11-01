@@ -32,7 +32,7 @@ namespace gymNotebook.Infrastructure
         {
             // tu umieść dodatkowe powiązania       
 
-            kernel.Bind<ITrainingRepository>().To<EFTrainingRepository>();
+            kernel.Bind<ITrainingManageRepository>().To<EFTrainingManageRepository>();
         }
     }
 }

@@ -10,4 +10,9 @@ namespace gymNotebook.ViewModels
         public IEnumerable<TrainingSession> TrainingSessions { get; set; }
         public IEnumerable<Exercise> Exercises { get; set; }
     }
+
+    public class ExerciseViewModel
+    {
+        public IEnumerable<Exercise> Exercises { get; set; }
+    }
 }

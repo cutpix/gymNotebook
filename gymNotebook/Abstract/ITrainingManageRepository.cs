@@ -7,9 +7,13 @@ using System.Web;
 
 namespace gymNotebook.Abstract
 {
-    public interface ITrainingRepository
+    public interface ITrainingManageRepository
     {
+        IEnumerable<Training> Trainings { get; }
+
         TrainingViewModel GetTrainings(string UserID);
+
+        ExerciseViewModel GetExercises(int SessionId);
 
         void SaveTraining(Training training);
 
